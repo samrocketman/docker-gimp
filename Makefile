@@ -1,20 +1,20 @@
-.PHONY: build install-alias run shell ~/.gimp-latest-config
+.PHONY: avoid-home build install-alias run shell ~/.gimp-latest-config
 
-run: ~/.gimp-latest-config
-	docker run --rm -e DISPLAY -e PWD -e CWD \
+run: ~/.gimp-latest-config avoid-home
+	docker run -it --rm -e DISPLAY \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-v "$(PWD):$(PWD)" \
 		-v ~/.gimp-latest-config:/home/sam/.config/GIMP \
+		-v "$(PWD):$(PWD)" \
 		-w "$(PWD)" gimp-latest gimp
 
 build:
 	docker build  -t gimp-latest .
 
-shell: ~/.gimp-latest-config
-	docker run -it --rm -e DISPLAY -e PWD -e CWD \
+shell: ~/.gimp-latest-config avoid-home
+	docker run -it --rm -e DISPLAY \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-v "$(PWD):$(PWD)" \
 		-v ~/.gimp-latest-config:/home/sam/.config/GIMP \
+		-v "$(PWD):$(PWD)" \
 		-w "$(PWD)" gimp-latest
 
 install-alias:
@@ -26,3 +26,6 @@ install-alias:
 clean:
 	[ ! -d ~/.gimp-latest-config ] || rm -r ~/.gimp-latest-config
 	docker rmi gimp-latest
+
+avoid-home:
+	@[ ! "$(PWD)" = "$(HOME)" ] || ( echo 'ERROR:  Do not run from $(HOME)' >&2; false  )
