@@ -8,7 +8,7 @@ run: ~/.gimp-latest-config avoid-home
 		-w "$(PWD)" gimp-latest gimp
 
 build:
-	docker build  -t gimp-latest .
+	docker build --pull -t gimp-latest .
 
 shell: ~/.gimp-latest-config avoid-home
 	docker run -it --rm -e DISPLAY \
