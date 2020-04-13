@@ -20,3 +20,5 @@ mounted within the container and GIMP to be launched.
 # Other info
 
 Estimated size is ~600MB.
+
+To upgrade run `make build`.
