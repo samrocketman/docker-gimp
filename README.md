@@ -21,8 +21,10 @@ mounted within the container and GIMP to be launched.
 
 - `gimp-latest` will launch the docker container and connect to my X session.
   It will mount my working directory and open GIMP.
-- `gimp-latest shell` will launcy the docker container, mount my working
-  directory and connect X session.  It opens a shell instead of GIMP.
+- `gimp-latest shell` will launch the docker container, mount my working
+  directory and connect X session.  It opens a shell instead of GIMP.  However,
+  because an X session is available you can still launch gimp from the shell by
+  running `gimp`.
 
 # Other info
 
