@@ -17,6 +17,13 @@ Save alias to your bashrc.
 Running `gimp-latest` from any directory will cause the current directory to be
 mounted within the container and GIMP to be launched.
 
+### Alias usage
+
+- `gimp-latest` will launch the docker container and connect to my X session.
+  It will mount my working directory and open GIMP.
+- `gimp-latest shell` will launcy the docker container, mount my working
+  directory and connect X session.  It opens a shell instead of GIMP.
+
 # Other info
 
 Estimated size is ~600MB.

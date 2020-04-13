@@ -24,7 +24,7 @@ clean-config:
 	[ ! -d ~/.gimp-latest-config ] || rm -r ~/.gimp-latest-config
 
 install-alias:
-	echo "alias gimp-latest=\"make -f '$(PWD)'/Makefile run\"" >> ~/.bashrc
+	echo "alias gimp-latest=\"make -f '$(PWD)'/Makefile\"" >> ~/.bashrc
 
 # Call run but unset CMD variable so container runs default shell.
 shell: CMD =
